@@ -50,11 +50,6 @@ body {
   margin-top: 20px;
 }
 
-.calculadora .btn-calcular:hover {
-  background-color: #5791ff;
-  color: white;
-}
-
 @media (max-width: 576px) {
   .calculadora form {
       padding: 50px 20px;

@@ -1,132 +1,109 @@
-import React from 'react';
-import Select from 'react-select'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalculator, faClock } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import Figure from "react-bootstrap/Figure";
+import Select from "react-select";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import InputGroup from "react-bootstrap/InputGroup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalculator, faClock } from "@fortawesome/free-solid-svg-icons";
 
 const options = [
-    { value: 'anos', label: 'Anos' },
-    { value: 'meses', label: 'Meses' }
+  { value: "anos", label: "Anos" },
+  { value: "meses", label: "Meses" },
 ];
 
 export default function CalculadoraForm(props) {
   return (
     <>
-      <form className='g-3'>
-        <figure className='text-center'>
-          <h4>CALCULADORA DE RENDA FIXA</h4>
-          <figcaption className='blockquote-footer'>
-            Faça simulações de renda fixa
-          </figcaption>
-        </figure>
-        <div className='form-icon'>
+      <Form>
+        <div className="form-icon">
           <FontAwesomeIcon icon={faCalculator} />
         </div>
-        <fieldset className='form-group row mb-3'>
-          <div className='row'>
-            <legend className='col-form-label col-sm-3 pt-0'>
-              Tipo de investimento
-            </legend>
-            <div className='col-sm-9'>
-              <div className='form-check form-check-inline'>
-                <input
-                  className='form-check-input'
-                  type='radio'
-                  name='tipoInvestimento'
-                  id='tipoInvestimento'
-                  defaultValue='cdblc'
-                />
-                <label className='form-check-label'>
-                  CDB/LC
-                </label>
-              </div>
-              <div className='form-check form-check-inline'>
-                <input
-                  className='form-check-input'
-                  type='radio'
-                  name='tipoInvestimento'
-                  id='tipoInvestimento2'
-                  defaultValue='lcilca'
-                />
-                <label className='form-check-label'>
-                  LCI/LCA
-                </label>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-        <div className='form-group row mb-3'>
-          <div className='col-sm-6'>
-            <label className='form-label'>Investimento inicial</label>
-            <div className='input-group'>
-              <span className='input-group-text'>R$</span>
-              <input
-                type='text'
-                className='form-control'
-                id='aporteInicial'
-                placeholder='0,00'
+        <Figure className="text-center d-block">
+          <h4>CALCULADORA DE RENDA FIXA</h4>
+          <Figure.Caption class="blockquote-footer">
+            Faça simulações de renda fixa
+          </Figure.Caption>
+        </Figure>
+
+        <Row className="mb-3">
+          <Form.Label className="col-form-label col-sm-3 pt-0">Tipo de investimento</Form.Label>
+
+          {["radio"].map((type) => (
+            <div key={`inline-${type}`} className="col-sm-9">
+              <Form.Check
+                inline
+                label="CDB/LC"
+                name="group1"
+                type={type}
+                id={`inline-${type}-1`}
+              />
+              <Form.Check
+                inline
+                label="LCI/LCA"
+                name="group1"
+                type={type}
+                id={`inline-${type}-2`}
               />
             </div>
-          </div>
-          <div className='col-sm-6'>
-            <label className='form-label'>Investimento mensal</label>
-            <div className='input-group'>
-              <span className='input-group-text'>R$</span>
-              <input
-                type='text'
-                className='form-control'
-                id='aporteMensal'
-                placeholder='0,00'
-              />
-            </div>
-          </div>
-        </div>
-        <div className='form-group row mb-3'>
-          <div className='col-sm-6'>
-            <label className='form-label'>Taxa de juros ao mês</label>
-            <div className='input-group'>
-              <span className='input-group-text'>%</span>
-              <input
-                type='text'
-                className='form-control'
-                id='jurosMes'
-                placeholder='0,00'
-              />
-            </div>
-          </div>
-          <div className='col-sm-6'>
-            <label className='form-label'>Período em</label>
-            <div className='input-group'>
-              <span className='input-group-text'>
+          ))}
+        </Row>
+
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridInitial">
+            <Form.Label>Investimento inicial</Form.Label>
+            <InputGroup className="mb-2">
+              <InputGroup.Text>R$</InputGroup.Text>
+              <Form.Control type="text" placeholder="0,00" />
+            </InputGroup>
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridMonthly">
+            <Form.Label>Investimento mensal</Form.Label>
+            <InputGroup className="mb-2">
+              <InputGroup.Text>R$</InputGroup.Text>
+              <Form.Control type="text" placeholder="0,00" />
+            </InputGroup>
+          </Form.Group>
+        </Row>
+
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridRate">
+            <Form.Label>Taxa de juros ao mês</Form.Label>
+            <InputGroup className="mb-2">
+              <InputGroup.Text>%</InputGroup.Text>
+              <Form.Control type="text" placeholder="0,00" />
+            </InputGroup>
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridPeriod">
+            <Form.Label>Período em</Form.Label>
+            <InputGroup className="mb-2">
+              <InputGroup.Text>
                 <FontAwesomeIcon icon={faClock} />
-              </span>
-              <input
-                type='number'
-                className='form-control'
-                id='periodo'
-                defaultValue='1'
+              </InputGroup.Text>
+              <Form.Control type="text" placeholder="0,00" />
+              <Select
+                options={options}
+                id="periodoEm"
+                placeholder={"selecione"}
               />
-              <Select 
-                options={options} 
-                id='periodoEm'
-                placeholder={'selecione'}
-              />
-            </div>
-          </div>
+            </InputGroup>
+          </Form.Group>
+        </Row>
+
+        <div className="d-grid gap-2">
+          <Button
+            variant="primary"
+            type="submit"
+            className="btn-calcular"
+          >
+            Calcular
+          </Button>
         </div>
-        <div className='form-group row'>
-          <div className='col-sm-12'>
-            <div className='d-grid gap-2'>
-              <button 
-                type='submit' 
-                className='btn btn-block btn-calcular' 
-                onclick='calcular();return false;'
-              >
-                Calcular
-              </button>
-            </div>
-          </div>
-        </div>
-      </form>
+      </Form>
     </>
   );
 }
