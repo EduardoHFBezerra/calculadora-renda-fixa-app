@@ -1,9 +1,9 @@
-import "./App.css";
-import CalculadoraForm from "./components/CalculadoraForm";
+import './App.css';
+import CalculadoraForm from './components/CalculadoraForm';
 
 function App() {
   return (
-    <div className="calculadora">
+    <div className='calculadora'>
         <CalculadoraForm />
     </div>
   );
