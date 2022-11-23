@@ -64,8 +64,6 @@ export default function Calculator(props) {
   }, [props]);
 
   return (
-    <div className='result p-5 rounded-5 shadow bg-light mx-auto mt-5'>
-      <h5>Resultado</h5>
       <Table responsive borderless>
         <thead>
           <tr>
@@ -116,6 +114,5 @@ export default function Calculator(props) {
           </tr>
         </tbody>
       </Table>
-    </div>
   );
 }
