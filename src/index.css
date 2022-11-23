@@ -2,7 +2,7 @@ body {
   background-color: #dee9ff !important;
 }
 
-.calculator form, .calculator .resultado {
+.calculator .form, .calculator .resultado {
   max-width: 850px;
 }
 
