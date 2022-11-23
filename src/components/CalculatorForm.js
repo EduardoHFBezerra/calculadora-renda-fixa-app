@@ -40,12 +40,12 @@ export default function CalculatorForm(props) {
       <Form onSubmit={handleSubmit}>
         <Row className='mb-3'>
           <Col sm={12}>
-            <Form.Label className='col-form-label col-sm-3 pt-0'>
+            <Form.Label className='col-form-label pt-0'>
               Tipo de investimento
             </Form.Label>
 
             {['radio'].map((type) => (
-              <div key={`inline-${type}`} className='col-sm-9'>
+              <div key={`inline-${type}`}>
                 <Form.Check
                   required
                   inline
@@ -71,99 +71,91 @@ export default function CalculatorForm(props) {
         </Row>
 
         <Row className='mb-3'>
-          <Col sm={6}>
-            <Form.Group as={Col} controlId='formGridInitial'>
-              <Form.Label>Investimento inicial</Form.Label>
-              <InputGroup className='mb-2'>
-                <InputGroup.Text>R$</InputGroup.Text>
-                <Form.Control
-                  required
-                  as={NumericFormat}
-                  placeholder='0,00'
-                  name='formGridInitial'
-                  onChange={formHandler}
-                  thousandSeparator='.'
-                  decimalSeparator=','
-                  decimalScale={2}
-                  fixedDecimalScale={true}
-                />
-              </InputGroup>
-            </Form.Group>
-          </Col>
+          <Form.Group as={Col} sm={6} controlId='formGridInitial'>
+            <Form.Label>Investimento inicial</Form.Label>
+            <InputGroup className='mb-2'>
+              <InputGroup.Text>R$</InputGroup.Text>
+              <Form.Control
+                required
+                as={NumericFormat}
+                placeholder='0,00'
+                name='formGridInitial'
+                onChange={formHandler}
+                thousandSeparator='.'
+                decimalSeparator=','
+                decimalScale={2}
+                fixedDecimalScale={true}
+              />
+            </InputGroup>
+          </Form.Group>
 
-          <Col sm={6}>
-            <Form.Group as={Col} controlId='formGridMonthly'>
-              <Form.Label>Investimento mensal</Form.Label>
-              <InputGroup className='mb-2'>
-                <InputGroup.Text>R$</InputGroup.Text>
-                <Form.Control
-                  required
-                  as={NumericFormat}
-                  placeholder='0,00'
-                  name='formGridMonthly'
-                  onChange={formHandler}
-                  thousandSeparator='.'
-                  decimalSeparator=','
-                  decimalScale={2}
-                  fixedDecimalScale={true}
-                />
-              </InputGroup>
-            </Form.Group>
-          </Col>
+          <Form.Group as={Col} sm={6} controlId='formGridMonthly'>
+            <Form.Label>Investimento mensal</Form.Label>
+            <InputGroup className='mb-2'>
+              <InputGroup.Text>R$</InputGroup.Text>
+              <Form.Control
+                required
+                as={NumericFormat}
+                placeholder='0,00'
+                name='formGridMonthly'
+                onChange={formHandler}
+                thousandSeparator='.'
+                decimalSeparator=','
+                decimalScale={2}
+                fixedDecimalScale={true}
+              />
+            </InputGroup>
+          </Form.Group>
         </Row>
 
         <Row className='mb-3'>
-          <Col sm={6}>
-            <Form.Group as={Col} controlId='formGridRate'>
-              <Form.Label>Taxa de juros ao mês</Form.Label>
-              <InputGroup className='mb-2'>
-                <InputGroup.Text>%</InputGroup.Text>
-                <Form.Control
-                  required
-                  as={NumericFormat}
-                  placeholder='0,00'
-                  name='formGridRate'
-                  onChange={formHandler}
-                  thousandSeparator='.'
-                  decimalSeparator=','
-                  decimalScale={2}
-                  fixedDecimalScale={true}
-                />
-              </InputGroup>
-            </Form.Group>
-          </Col>
+          <Form.Group as={Col} sm={6} controlId='formGridRate'>
+            <Form.Label>Taxa de juros ao mês</Form.Label>
+            <InputGroup className='mb-2'>
+              <InputGroup.Text>%</InputGroup.Text>
+              <Form.Control
+                required
+                as={NumericFormat}
+                placeholder='0,00'
+                name='formGridRate'
+                onChange={formHandler}
+                thousandSeparator='.'
+                decimalSeparator=','
+                decimalScale={2}
+                fixedDecimalScale={true}
+              />
+            </InputGroup>
+          </Form.Group>
 
-          <Col sm={6}>
-            <Form.Group as={Col} controlId='formGridPeriod'>
-              <Form.Label>Período em</Form.Label>
-              <InputGroup className='mb-2'>
-                <InputGroup.Text>
-                  <FontAwesomeIcon icon={faClock} />
-                </InputGroup.Text>
-                <Form.Control
-                  required
-                  type='number'
-                  min='0'
-                  placeholder='1'
-                  name='formGridPeriod'
-                  onChange={formHandler}
-                />
-                <Form.Select
-                  required
-                  id='formGridPeriodIn'
-                  name='formGridPeriodIn'
-                  onChange={formHandler}
-                  defaultValue=''
-                >
-                  <option value='' disabled>
-                    selecione
-                  </option>
-                  <option value='anos'>Anos</option>
-                  <option value='meses'>Meses</option>
-                </Form.Select>
-              </InputGroup>
-            </Form.Group>
-          </Col>
+          <Form.Group as={Col} sm={6} controlId='formGridPeriod'>
+            <Form.Label>Período em</Form.Label>
+            <InputGroup className='mb-2'>
+              <InputGroup.Text>
+                <FontAwesomeIcon icon={faClock} />
+              </InputGroup.Text>
+              <Form.Control
+                required
+                type='number'
+                min='0'
+                placeholder='1'
+                name='formGridPeriod'
+                onChange={formHandler}
+              />
+              <Form.Select
+                required
+                id='formGridPeriodIn'
+                name='formGridPeriodIn'
+                onChange={formHandler}
+                defaultValue=''
+              >
+                <option value='' disabled>
+                  selecione
+                </option>
+                <option value='anos'>Anos</option>
+                <option value='meses'>Meses</option>
+              </Form.Select>
+            </InputGroup>
+          </Form.Group>
         </Row>
 
         <div className='d-grid gap-2'>
