@@ -65,7 +65,7 @@ export default function Calculator(props) {
   }, [props, result]);
 
   return (
-    <div className='resultado p-5 rounded-5 shadow bg-light mx-auto mt-5'>
+    <div className='result p-5 rounded-5 shadow bg-light mx-auto mt-5'>
       <h5>Resultado</h5>
       <div className='table-responsive'>
         <Table striped responsive hover>
