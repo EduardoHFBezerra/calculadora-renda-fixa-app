@@ -150,8 +150,8 @@ export default function CalculatorForm(props) {
                 <option value='' disabled>
                   selecione
                 </option>
-                <option value='anos'>Anos</option>
-                <option value='meses'>Meses</option>
+                <option value='year'>Anos</option>
+                <option value='month'>Meses</option>
               </Form.Select>
             </InputGroup>
           </Form.Group>

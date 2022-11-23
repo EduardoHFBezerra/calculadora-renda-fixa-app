@@ -21,7 +21,7 @@ export default function Calculator(props) {
     return parseFloat(floatResult);
   };
 
-  const getAliquota = (period) => {
+  const getAliquot = (period) => {
     if (period < 6) {
       return 0.225;
     } else if (period >= 6 && period < 12) {
@@ -42,7 +42,7 @@ export default function Calculator(props) {
     const periodIn = props.calc.formGridPeriodIn;
 
     rate = rate / 100;
-    period = periodIn === 'anos' ? period * 12 : period;
+    period = periodIn === 'year' ? period * 12 : period;
 
     const futureValue = initialContribution * (1 + rate) ** period +
       (monthlyContribution * ((1 + rate) ** period - 1)) / rate;
@@ -50,8 +50,8 @@ export default function Calculator(props) {
     const totalSpent = (monthlyContribution * period) + initialContribution;
 
     const grossEarned = futureValue - totalSpent;
-    const tax = typeInvestment === 'cdblc' ? getAliquota(period) : 0;
-    const earnedIncome = tax === 0 ? grossEarned : grossEarned - grossEarned * tax;
+    const tax = typeInvestment === 'cdblc' ? getAliquot(period) : 0;
+    const earnedIncome = tax === 0 ? grossEarned : grossEarned - (grossEarned * tax);
     const obj = {
       totalSpent: totalSpent,
       grossEarned: grossEarned,
