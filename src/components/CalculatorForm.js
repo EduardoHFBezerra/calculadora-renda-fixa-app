@@ -119,7 +119,6 @@ export default function CalculatorForm(props) {
                 placeholder='0,00'
                 name='formGridRate'
                 onChange={formHandler}
-                thousandSeparator='.'
                 decimalSeparator=','
                 decimalScale={2}
                 fixedDecimalScale={true}

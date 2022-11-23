@@ -1,7 +1,6 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
-import { useState } from 'react';
-import useDeepCompareEffect from 'use-deep-compare-effect'
+import { useEffect, useState } from 'react';
 
 export default function Calculator(props) {
   const [result, setResult] = useState({});
@@ -21,18 +20,18 @@ export default function Calculator(props) {
   };
 
   const getAliquota = (period) => {
-      if (period < 6) {
-          return 0.225
-      } else if (period >= 6 && period < 12) {
-          return 0.20
-      } else if (period >= 12 && period < 24) {
-          return 0.175
-      } else if (period >= 24) {
-          return 0.15
-      }
+    if (period < 6) {
+      return 0.225
+    } else if (period >= 6 && period < 12) {
+      return 0.20
+    } else if (period >= 12 && period < 24) {
+      return 0.175
+    } else if (period >= 24) {
+      return 0.15
+    }
   };
 
-  useDeepCompareEffect(() => {
+  useEffect(() => {
     const initialContribution = parseToFloat(props.calc.formGridInitial);
     const monthlyContribution = parseToFloat(props.calc.formGridMonthly);
     const typeInvestment = props.calc.formGridType;
@@ -61,11 +60,11 @@ export default function Calculator(props) {
       totalNetReceivable: totalSpent + earnedIncome,
       tax: tax
     }
-    setResult({ ...result, ...obj });
-  }, [props, result]);
+    setResult(result => ({ ...result, ...obj }));
+  }, [props]);
 
   return (
-    <div className='resultado p-5 rounded-5 shadow bg-light mx-auto mt-5'>
+    <div className='result p-5 rounded-5 shadow bg-light mx-auto mt-5'>
       <h5>Resultado</h5>
       <div className='table-responsive'>
         <Table striped responsive hover>
